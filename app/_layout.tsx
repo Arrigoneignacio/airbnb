@@ -18,7 +18,15 @@ const tokenCache = {
       return null;
     }
   },
+  async saveToken(key: string, value: string){
+    try{
+      return SecureStore.setItemAsync(key, value);
+    }catch (err){
+      return;
+    }
+  }
 }
+
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -38,7 +46,7 @@ export default function RootLayout() {
     'mon': require ('../assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf'),
     'mon-sb': require ('../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf'),
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
+    // ...FontAwesome.font,
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -93,7 +101,7 @@ function RootLayoutNav() {
         />
         <Stack.Screen name="listing/[id]" options={{headerTitle: ''}}/>
         <Stack.Screen
-        name="(modals)/bookin"
+        name="(modals)/booking"
         options={{
           presentation: 'transparentModal',
           animation: 'fade',
