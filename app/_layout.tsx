@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useRoute } from '@react-navigation/native';
 import { isLoaded, useFonts } from 'expo-font';
