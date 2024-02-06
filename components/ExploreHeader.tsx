@@ -1,13 +1,13 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import React from "react";
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 import Colors from "@/constants/Colors";
-import * as Haptics from 'expo-haptics';
+import * as Haptics from "expo-haptics";
 
 const categories = [
   {
@@ -39,24 +39,24 @@ const categories = [
     icon: "nature-people",
   },
 ];
-  interface Props {
+interface Props {
   onCategoryChanged: (category: string) => void;
-  }
-const ExploreHeader = ({onCategoryChanged}: Props) => {
+}
+const ExploreHeader = ({ onCategoryChanged }: Props) => {
   const scrollRef = useRef<ScrollView>(null);
   const itemsRef = useRef<Array<TouchableOpacity | null>>([]);
   const [activeIndex, setActiveIndex] = useState(1);
 
-  const selectCategory = (index: number ) => {
+  const selectCategory = (index: number) => {
     const selected = itemsRef.current[index];
-    setActiveIndex (index);
+    setActiveIndex(index);
     selected?.measure((x) => {
       scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true });
-    }); 
+    });
 
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    onCategoryChanged (categories[index].name)
-};
+    onCategoryChanged(categories[index].name);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -78,7 +78,7 @@ const ExploreHeader = ({onCategoryChanged}: Props) => {
           </TouchableOpacity>
         </View>
         <ScrollView
-        ref={scrollRef}
+          ref={scrollRef}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
@@ -89,11 +89,20 @@ const ExploreHeader = ({onCategoryChanged}: Props) => {
         >
           {categories.map((item, index) => (
             <TouchableOpacity
-            onPress={() =>selectCategory(index)}
+              onPress={() => selectCategory(index)}
               key={index}
               ref={(el) => (itemsRef.current[index] = el)}
-              style={activeIndex === index ? styles.categoriesBtnActive : styles.categoriesBtn}>
-              <MaterialIcons size={24} name={item.icon as any} color={activeIndex === index ? '#000' : Colors.grey }/>
+              style={
+                activeIndex === index
+                  ? styles.categoriesBtnActive
+                  : styles.categoriesBtn
+              }
+            >
+              <MaterialIcons
+                size={24}
+                name={item.icon as any}
+                color={activeIndex === index ? "#000" : Colors.grey}
+              />
               <Text>{item.name}</Text>
             </TouchableOpacity>
           ))}
