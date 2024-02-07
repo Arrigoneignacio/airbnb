@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-  Share
-} from "react-native";
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Share } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useLocalSearchParams , useNavigation} from "expo-router";
 import listingsData from "@/assets/data/airbnb-listings2.json";
