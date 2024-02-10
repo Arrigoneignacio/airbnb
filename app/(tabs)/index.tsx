@@ -23,8 +23,8 @@ return (
                       header: () => <ExploreHeader onCategoryChanged={onDataChanged}/>,  
                 }}
                 />
-                {/* { <Listings listings={items} category={category}/> } */}
-                <ListingsMaps listings={listingDataGeo}/>
+                { <Listings listings={items} category={category}/> }
+                {/* <ListingsMaps listings={listingDataGeo}/> */}
                        </View>
 
         );

@@ -13,7 +13,7 @@ const { width } = Dimensions.get("window");
 
 const Page = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const listing: Listing = (listingsData as any[]).find((item) => item.id);
+  const listing: Listing = (listingsData as any[]).find((item) => item.id === id);
   const navigation = useNavigation();
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
